@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 
 
@@ -9,30 +9,33 @@ export default class App extends Component {
     const handlePress = () => false
     return (
       <View style={styles.container}>
+        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <Text style={styles.description}>
           Будь ласка введіть свої облікові данні
         </Text>
         <TextInput style={styles.input}          //Поля вводу данних
           keyboardType = "phone-pad"  
           placeholder ="Номер телефону"
+          placeholderTextColor= "black"
         />
         <TextInput style={styles.input}
             secureTextEntry = "true" 
-            placeholder ="Пароль" 
+            placeholder ="Пароль"
+            placeholderTextColor= "black" 
         />
         
         <View style={styles.LogIn}>  
           <Button                           // кнопки вхід та реєстрація
             onPress = {handlePress}
             title = "Вхід"
-            color = "red"
+            color = "Black"
           />
         </View>
         <View style={styles.singIn}>
           <Button
             onPress = {handlePress}
             title = "Реєстрація"
-            color= "Gray"
+            color= "Black"
           />
         </View>
         
@@ -40,33 +43,36 @@ export default class App extends Component {
           <AntDesign style={styles.infoCircle} //Іконки інфо,телефон, замок 
           name="infocirlce" 
           size={30} 
-          color="black" 
+          color="white" 
           />
           <AntDesign style={styles.phone}
            name="phone" 
            size={30} 
-           color="black" 
+           color="white" 
           />
           <AntDesign style={styles.lock} 
           name="lock" 
           size={34} 
-          color="black" 
+          color="white" 
           />
-        </View>  
+        </View>
+        </ImageBackground>  
       </View>
     );
   }
 }
 
-
+const image = { uri: "https://c4.wallpaperflare.com/wallpaper/210/603/584/nissan-skyline-gt-r-r34-nissan-gtr-r34-nissan-skyline-gt-r-r34-nismo-nissan-skyline-r34-car-speed-hunters-wallpaper-preview.jpg" };
                                               // Стилі
 const styles = StyleSheet.create({
                                               //Основний контейнер 
   container : {
+    flex : 1,
     backgroundColor : "#97a4ba",
     position : "absolute",
     width : "100%",
-    height : "100%", 
+    height : "100%",
+     
   },
                                              // Текст над полями
   description : {
@@ -74,10 +80,13 @@ const styles = StyleSheet.create({
     fontSize : 20,
     top : "35%",
     left : "4%",
+   // backgroundColor : "white",
+    color : "white",
+    
   },
-                                             //Поля вводу
+                                                                                    //Поля вводу
   input: {
-  backgroundColor: "#656970",
+  backgroundColor: "white",
   width :"50%",
   top : "40%",
   left : "25%",
@@ -94,7 +103,7 @@ const styles = StyleSheet.create({
   width : "37%",
   borderWidth : 1,
   borderRadius : 10,
-  backgroundColor : "#656970",
+  backgroundColor : "white",
   },
                                               // Кнопка Реєстрації
   singIn: {
@@ -104,7 +113,7 @@ const styles = StyleSheet.create({
     width : "37%",
     borderWidth : 1,
     borderRadius : 10,
-    backgroundColor : "#656970",
+    backgroundColor : "white",
   },
                                                 //Контейнер картинок
     info : {
@@ -126,6 +135,13 @@ const styles = StyleSheet.create({
   lock : {
     top : "29%",
     left : "17%",
+  },
+
+  image : {
+    flex : 1,
+    justifyContent : "center",
+    width : "100%",
+    height : "100%",
   },
 
 });
