@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-export default class login extends React.Component {
-    
-  render() {
+const Stack = createNativeStackNavigator();
 
-    const {navigate} = this.props.navigation
+export default class Register extends React.Component {
+    render () {
     return (
       <View style={styles.container}>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -50,18 +50,12 @@ export default class login extends React.Component {
         </View>
         <View style={styles.LogIn}>  
           <Button                           // кнопки вхід та реєстрація
-            onPress = {() =>navigate("Homescreen")}
+            onPress = {() =>navigation.navigate("Homescreen")}
             title = "Вхід"
             color = "Black"
           />
         </View>
-        <View style={styles.singIn}>
-          <Button
-            onPress = {() =>navigate("register")}
-            title = "Реєстрація"
-            color= "Black"
-          />
-        </View>
+        
         
         <View style={styles.info}> 
           <AntDesign style={styles.infoCircle} //Іконки інфо,телефон, замок 
@@ -75,6 +69,7 @@ export default class login extends React.Component {
     );
   }
 }
+
 
 const image = { uri: "https://c4.wallpaperflare.com/wallpaper/210/603/584/nissan-skyline-gt-r-r34-nissan-gtr-r34-nissan-skyline-gt-r-r34-nismo-nissan-skyline-r34-car-speed-hunters-wallpaper-preview.jpg" };
                                               // Стилі

@@ -2,22 +2,21 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 
-export default class login extends React.Component {
-    
-  render() {
 
-    const {navigate} = this.props.navigation
+export default class Login extends React.Component {
+    render () {  
     return (
       <View style={styles.container}>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <Text style={styles.description}>
-          Будь ласка введіть свої облікові данні
+          Будь ласка введіть свої облікові данні 
         </Text>
+        
         <View style={styles.input}>
         <AntDesign style={styles.email}
            name="mail" 
-           size={30} 
-           color="white" 
+           size={24} 
+           color="black" 
           />
         <TextInput         //Поля вводу данних  
           placeholder ="Пошта"
@@ -27,8 +26,8 @@ export default class login extends React.Component {
         <View style={styles.input}>
         <AntDesign style={styles.lock} 
           name="lock" 
-          size={34} 
-          color="white" 
+          size={30} 
+          color="black" 
           />
         <TextInput 
             secureTextEntry = "true" 
@@ -38,14 +37,14 @@ export default class login extends React.Component {
         </View>
         <View style={styles.LogIn}>  
           <Button                           // кнопки вхід та реєстрація
-            onPress = {() =>navigate("Homescreen")}
+            onPress = {() =>navigation.navigate("HomeScreen")}
             title = "Вхід"
             color = "Black"
           />
         </View>
         <View style={styles.singIn}>
           <Button
-            onPress = {() =>navigate("register")}
+            onPress = {() =>navigation.navigate("Register")}
             title = "Реєстрація"
             color= "Black"
           />
@@ -63,6 +62,8 @@ export default class login extends React.Component {
     );
   }
 }
+
+
 
 const image = { uri: "https://c4.wallpaperflare.com/wallpaper/210/603/584/nissan-skyline-gt-r-r34-nissan-gtr-r34-nissan-skyline-gt-r-r34-nismo-nissan-skyline-r34-car-speed-hunters-wallpaper-preview.jpg" };
                                               // Стилі
@@ -87,14 +88,14 @@ const styles = StyleSheet.create({
     
   },
                                                                                     //Поля вводу
-  input: {
+  input: {  
   backgroundColor: "white",
   width :"50%",
   top : "40%",
   left : "25%",
   borderWidth : 1,
   borderRadius : 10,
-  padding : 10,
+  padding : 1,
   margin : 10,
   },
                                               // Кнопка Вхід
@@ -131,12 +132,12 @@ const styles = StyleSheet.create({
                                                 // Картинка телефона
   email : {
     top : "24%",
-    left : "17%",
+    left : "30%",
   },
                                                   //Картинка замку
   lock : {
     top : "29%",
-    left : "17%",
+    left : "30%",
   },
 
   image : {
