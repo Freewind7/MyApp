@@ -1,17 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 
 
-export default class Login extends React.Component {
-    render () {  
+export default function Login ({navigation}) {
+  const LoadHome = () => {
+    navigation.navigate ('Home');
+  }  
+  const LoadScene = () => {
+    navigation.navigate ('Register');
+  }
+  const LoadInfo = () => {
+    navigation.navigate ('Info');
+   } 
     return (
       <View style={styles.container}>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <Text style={styles.description}>
           Будь ласка введіть свої облікові данні 
         </Text>
-        
         <View style={styles.input}>
         <AntDesign style={styles.email}
            name="mail" 
@@ -21,6 +28,7 @@ export default class Login extends React.Component {
         <TextInput         //Поля вводу данних  
           placeholder ="Пошта"
           placeholderTextColor= "black"
+          style={styles.TextInputStyle} 
         />
         </View>
         <View style={styles.input}>
@@ -28,23 +36,24 @@ export default class Login extends React.Component {
           name="lock" 
           size={30} 
           color="black" 
-          />
+        />
         <TextInput 
             secureTextEntry = "true" 
             placeholder ="Пароль"
-            placeholderTextColor= "black" 
+            placeholderTextColor= "black"
+            style={styles.TextInputStyle}  
         />
         </View>
-        <View style={styles.LogIn}>  
-          <Button                           // кнопки вхід та реєстрація
-            onPress = {() =>navigation.navigate("HomeScreen")}
-            title = "Вхід"
+        <View style={styles.LogIn}> 
+          <Button
+            onPress = {LoadHome}
+            title = "Вхід"                           // кнопки вхід та реєстрація
             color = "Black"
           />
         </View>
         <View style={styles.singIn}>
           <Button
-            onPress = {() =>navigation.navigate("Register")}
+            onPress = {LoadScene}
             title = "Реєстрація"
             color= "Black"
           />
@@ -54,14 +63,14 @@ export default class Login extends React.Component {
           <AntDesign style={styles.infoCircle} //Іконки інфо,телефон, замок 
           name="infocirlce" 
           size={30} 
-          color="white" 
+          color="white"
+          onPress={LoadInfo} 
           />
         </View>
         </ImageBackground>  
       </View>
     );
   }
-}
 
 
 
@@ -71,7 +80,6 @@ const styles = StyleSheet.create({
                                               //Основний контейнер 
   container : {
     flex : 1,
-    backgroundColor : "#97a4ba",
     position : "absolute",
     width : "100%",
     height : "100%",
@@ -87,11 +95,15 @@ const styles = StyleSheet.create({
     color : "white",
     
   },
+  TextInputStyle : {
+     bottom: "25%",
+     left : "5%"
+  }, 
                                                                                     //Поля вводу
   input: {  
   backgroundColor: "white",
   width :"50%",
-  top : "40%",
+  top : "1%",
   left : "25%",
   borderWidth : 1,
   borderRadius : 10,
@@ -118,34 +130,47 @@ const styles = StyleSheet.create({
     borderRadius : 10,
     backgroundColor : "white",
   },
-                                                //Контейнер картинок
-    info : {
-    flex : 1,
-    width : "100%",
-    height : "100%",
-  },
-                                               //Картинка інфо
-  infoCircle : {
-    top : "40%",
+                                                //Контейнер картинок      
+                                             
+  infoCircle : {                                //Картинка інфо
+    top : "-135%",
     left: "80%"
   },
                                                 // Картинка телефона
   email : {
     top : "24%",
-    left : "30%",
+    left : "80%",
   },
                                                   //Картинка замку
   lock : {
     top : "29%",
-    left : "30%",
+    left : "80%",
   },
 
   image : {
     flex : 1,
     justifyContent : "center",
-    width : "100%",
-    height : "100%",
   },
 
 });
 
+
+/*export default class App extends React.Component {
+
+  /*state = { 
+    isFontLoaded : false
+  }
+  async componentDidMount () {
+    await Font.loadAsync ({
+      Outfit : require ("./src/fonts/Outfit-Thin.ttf"),
+      ZenKakuGothicNew : require ("./src/fonts/ZenKakuGothicNew-Light.ttf"),
+    });
+
+  this.setState({isFontLoaded:true});
+
+  }*/
+  /*
+  render () {
+    return <Stack/>; 
+  }
+}*/

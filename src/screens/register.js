@@ -1,74 +1,84 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-const Stack = createNativeStackNavigator();
-
-export default class Register extends React.Component {
-    render () {
+export default function Register ({navigation}) {
+  const LoadHome = () => {
+    navigation.navigate ('Home');
+  }
+  LoadHome.navigationOptions  = {
+    headerLeft: () => {
+      return null;
+    }
+  }  
+   const LoadInfo = () => {
+    navigation.navigate ('Info');
+   } 
+  
     return (
       <View style={styles.container}>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <Text style={styles.description}>
-          Будь ласка введіть свої облікові данні
+          Введіть свою пошту та паролі
         </Text>
         <View style={styles.input}>
         <AntDesign style={styles.email}
            name="mail" 
-           size={30} 
-           color="white" 
+           size={21} 
+           color="black" 
           />
         <TextInput         //Поля вводу данних  
           placeholder ="Пошта"
           placeholderTextColor= "black"
+          style={styles.TextInputStyle} 
         />
         </View>
         <View style={styles.input}>
         <AntDesign style={styles.lock} 
           name="lock" 
-          size={34} 
-          color="white" 
+          size={24} 
+          color="black" 
           />
         <TextInput 
             secureTextEntry = "true" 
             placeholder ="Пароль"
-            placeholderTextColor= "black" 
+            placeholderTextColor= "black"
+            style={styles.TextInputStyle}  
         />
         </View>
         <View style={styles.input}>
         <AntDesign style={styles.lock} 
           name="lock" 
-          size={34} 
-          color="white" 
+          size={24} 
+          color="black" 
           />
         <TextInput 
             secureTextEntry = "true" 
             placeholder ="Пароль ще раз"
-            placeholderTextColor= "black" 
+            placeholderTextColor= "black"
+            style={styles.TextInputStyle}  
         />
         </View>
         <View style={styles.LogIn}>  
           <Button                           // кнопки вхід та реєстрація
-            onPress = {() =>navigation.navigate("Homescreen")}
-            title = "Вхід"
+            onPress = {LoadHome}
+            title = "Зареєструватись"
             color = "Black"
           />
         </View>
-        
-        
-        <View style={styles.info}> 
+        <View> 
           <AntDesign style={styles.infoCircle} //Іконки інфо,телефон, замок 
           name="infocirlce" 
           size={30} 
-          color="white" 
+          color="white"
+          onPress={LoadInfo} 
           />
         </View>
         </ImageBackground>  
       </View>
     );
   }
-}
+
 
 
 const image = { uri: "https://c4.wallpaperflare.com/wallpaper/210/603/584/nissan-skyline-gt-r-r34-nissan-gtr-r34-nissan-skyline-gt-r-r34-nismo-nissan-skyline-r34-car-speed-hunters-wallpaper-preview.jpg" };
@@ -88,8 +98,7 @@ const styles = StyleSheet.create({
     position : "absolute",
     fontSize : 20,
     top : "35%",
-    left : "4%",
-   // backgroundColor : "white",
+    left : "15%",
     color : "white",
     
   },
@@ -97,53 +106,42 @@ const styles = StyleSheet.create({
   input: {
   backgroundColor: "white",
   width :"50%",
-  top : "40%",
+  top : "10%",
   left : "25%",
   borderWidth : 1,
   borderRadius : 10,
-  padding : 10,
   margin : 10,
   },
                                               // Кнопка Вхід
   LogIn: {
-  position : "absolute",
-  top : "60%",
-  left: "10%",  
-  width : "37%",
+  top : "12%",
+  left: "27%",  
+  width : "51%",
   borderWidth : 1,
   borderRadius : 10,
   backgroundColor : "white",
   },
-                                              // Кнопка Реєстрації
-  singIn: {
-    position : "absolute",
-    top : "60%",
-    left : "55%",  
-    width : "37%",
-    borderWidth : 1,
-    borderRadius : 10,
-    backgroundColor : "white",
-  },
-                                                //Контейнер картинок
-    info : {
-    flex : 1,
-    width : "100%",
-    height : "100%",
-  },
+
+  TextInputStyle : {
+    bottom: "25%",
+    left : "5%",
+    opacity : 90,
+
+ },   
                                                //Картинка інфо
   infoCircle : {
-    top : "40%",
+    top : "150%",
     left: "80%"
   },
                                                 // Картинка телефона
   email : {
     top : "24%",
-    left : "17%",
+    left : "80%",
   },
                                                   //Картинка замку
   lock : {
     top : "29%",
-    left : "17%",
+    left : "80%",
   },
 
   image : {

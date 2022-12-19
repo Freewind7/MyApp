@@ -1,32 +1,111 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import React from "react";
+import { StyleSheet, Text, View, TextInput, Button, ImageBackground, Image } from "react-native";
+import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; 
+import { ScrollView } from "react-native-gesture-handler";
 
-const Stack = createNativeStackNavigator();
 
-export default class HomeScreen extends React.Component {
 
-    render () {
+
+export default function HomeScreen ({navigation}) {
+  const LoadList = () => {
+    navigation.navigate ('List');
+  }
+  LoadList.navigationOptions  = {
+    headerLeft: () => {
+      return null;
+    }
+  }
+  const LoadProfile = () => {
+    navigation.navigate ('Profile');
+  } 
     return (
       <View style={styles.container}>
-        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        <Text style={styles.description}>
-          Ласкаво просимо
-        </Text>
+        <ImageBackground source={ImageBack} resizeMode="cover" style={styles.ImageBack}>
+        <View style={styles.header}>
+          <Ionicons style={styles.icon}
+            name="people" 
+            size={40} 
+            color="white"
+            onPress={LoadProfile} 
+          />
+          <Text style={styles.textHeader}>
+            Новини
+          </Text>
+          <FontAwesome 
+            style={styles.bars}
+            name="bars" 
+            size={40} 
+            color="white" 
+            onPress={LoadList}
+          />
+        </View>
+        <View style={styles.containerNews}>
+          <ScrollView style={styles.ScrollView}>
+          <View style={styles.News}>
+            <Image source={image} style={styles.image}></Image>
+            <Text style={styles.containerText}>
+              Назва новини
+            </Text>
+            <Text style={styles.TextAbout}>
+              Короткий опис новини
+            </Text>
+          </View>
+          <View style={styles.News}>
+          <Image source={imageOne} style={styles.image}></Image>
+            <Text style={styles.containerText}>
+               Назва новини
+            </Text>
+            <Text style={styles.TextAbout}>
+              Короткий опис новини
+            </Text>
+          </View>
+          <View style={styles.News}>
+          <Image source={imageTwo} style={styles.image}></Image>
+            <Text style={styles.containerText}>
+              Назва  новини
+            </Text>
+            <Text style={styles.TextAbout}>
+              Короткий опис новини
+            </Text>
+          </View>  
+            <View style={styles.News}>
+            <Image source={imageThree} style={styles.image}></Image>
+              <Text style={styles.containerText}>
+                Назва новини
+              </Text>
+              <Text style={styles.TextAbout}>
+              Короткий опис новини
+            </Text>
+            </View>
+            <View style={styles.News}>
+            <Image source={imageFour} style={styles.image}></Image>
+              <Text style={styles.containerText}>
+                Назва новини
+              </Text>
+              <Text style={styles.TextAbout}>
+              Короткий опис новини
+            </Text>
+          </View>
+          </ScrollView>
+        </View>
         </ImageBackground>  
       </View>
     );
   }
-}
 
-const image = { uri: "https://c4.wallpaperflare.com/wallpaper/210/603/584/nissan-skyline-gt-r-r34-nissan-gtr-r34-nissan-skyline-gt-r-r34-nismo-nissan-skyline-r34-car-speed-hunters-wallpaper-preview.jpg" };
+  const image = { uri: "https://pro-sensys.com/upload/iblock/d15/d151cc8bfa2f848ee64ad0c574377b6e.jpg" }
+  const imageOne = { uri: "https://formulamotors.ru/upload/resize_cache/iblock/6f4/800_320_2/6f4f28e260390baff47ff6293da938bd.jpg"}
+  const imageTwo = {uri: "https://s1.stc.all.kpcdn.net/putevoditel/projectid_406014/images/tild6536-3938-4230-b865-643131353562__20160810_gaf_u40_940.jpg"}
+  const imageThree = {uri: "https://i.work.ua/career_guide/50_b.png"}
+  const imageFour = {uri: "http://diplomy-goznak.com/images/dyplom-avtomekhanyka.jpg"}
+  const ImageBack = {uri:"https://oir.mobi/uploads/posts/2021-03/1616974396_29-p-serii-fon-tekstura-30.jpg"}
+
                                               // Стилі
 const styles = StyleSheet.create({
                                               //Основний контейнер 
   container : {
     flex : 1,
-    backgroundColor : "#97a4ba",
     position : "absolute",
     width : "100%",
     height : "100%",
@@ -58,9 +137,7 @@ const styles = StyleSheet.create({
   position : "absolute",
   top : "60%",
   left: "10%",  
-  width : "37%",
-  borderWidth : 1,
-  borderRadius : 10,
+  width : "50%",
   backgroundColor : "white",
   },
                                               // Кнопка Реєстрації
@@ -95,11 +172,80 @@ const styles = StyleSheet.create({
     left : "17%",
   },
 
+  bars: {
+    top: -50,
+    left: "87%"
+  },
+
   image : {
     flex : 1,
-    justifyContent : "center",
+    width : "100%",
+    borderRadius : 10,
+  },
+
+  header: {
+    height: "15%",
+    backgroundColor: "#2474DB",
+    borderRadius : 10,
+    overflow : "hidden",
+  },
+
+  textHeader: {
+    color: "white",
+    left: "38%",
+    fontSize: 30,
+    width: "50%",
+    height: "50%"
+  },
+
+  icon : {
+    top: "40%",
+    left: "5%"
+  },
+
+  containerNews : {
     width : "100%",
     height : "100%",
+  },
+
+  TextAbout : {
+    flex : 1,
+    textAlign : "center",
+    borderWidth : 1,
+    borderRadius : 10,
+    margin : "2%",
+    overflow : "hidden",
+    backgroundColor : "white",
+  },
+
+  containerText : {
+    textAlign : "center",
+    fontSize : 30,
+    color: "white",
+    },
+
+  News : {
+    flex : 1,
+    borderWidth : 1,
+    borderRadius : 10,
+    flexDirection : "column",
+    marginTop : "2%",
+    width : "100%",
+    height : 550,
+    overflow : "hidden",
+    backgroundColor : "#2474DB",
+  },
+
+  ScrollView : {
+    paddingLeft : "2%",
+    paddingRight : "2%",
+    flex : 1,
+    flexDirection : "column",
+  },
+
+  ImageBack : {
+    width: "100%",
+    height : "100%"
   },
 
 });
