@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 
@@ -12,7 +12,9 @@ export default function Login ({navigation}) {
   }
   const LoadInfo = () => {
     navigation.navigate ('Info');
-   } 
+   }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState(""); 
     return (
       <View style={styles.container}>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -28,7 +30,8 @@ export default function Login ({navigation}) {
         <TextInput         //Поля вводу данних  
           placeholder ="Пошта"
           placeholderTextColor= "black"
-          style={styles.TextInputStyle} 
+          style={styles.TextInputStyle}
+          onChangeText={(email) => setEmail(email)} 
         />
         </View>
         <View style={styles.input}>
@@ -41,7 +44,8 @@ export default function Login ({navigation}) {
             secureTextEntry = "true" 
             placeholder ="Пароль"
             placeholderTextColor= "black"
-            style={styles.TextInputStyle}  
+            style={styles.TextInputStyle}
+            onChangeText={(password) => setPassword(password)}  
         />
         </View>
         <View style={styles.LogIn}> 

@@ -23,6 +23,7 @@ export default function HomeScreen ({navigation}) {
       <View style={styles.container}>
         <ImageBackground source={ImageBack} resizeMode="cover" style={styles.ImageBack}>
         <View style={styles.header}>
+        <ImageBackground source={HeaderBack} resizeMode="cover" style={styles.ImageBack}>
           <Ionicons style={styles.icon}
             name="people" 
             size={40} 
@@ -39,6 +40,7 @@ export default function HomeScreen ({navigation}) {
             color="white" 
             onPress={LoadList}
           />
+          </ImageBackground>
         </View>
         <View style={styles.containerNews}>
           <ScrollView style={styles.ScrollView}>
@@ -99,7 +101,8 @@ export default function HomeScreen ({navigation}) {
   const imageTwo = {uri: "https://s1.stc.all.kpcdn.net/putevoditel/projectid_406014/images/tild6536-3938-4230-b865-643131353562__20160810_gaf_u40_940.jpg"}
   const imageThree = {uri: "https://i.work.ua/career_guide/50_b.png"}
   const imageFour = {uri: "http://diplomy-goznak.com/images/dyplom-avtomekhanyka.jpg"}
-  const ImageBack = {uri:"https://oir.mobi/uploads/posts/2021-03/1616974396_29-p-serii-fon-tekstura-30.jpg"}
+  const ImageBack = {uri:"https://img.freepik.com/premium-photo/auto-repair-service-station-blurred-background_293060-4493.jpg?w=740"}
+  const HeaderBack = {uri:"https://oir.mobi/uploads/posts/2021-03/1616974365_17-p-serii-fon-tekstura-18.jpg"}
 
                                               // Стилі
 const styles = StyleSheet.create({
@@ -229,11 +232,11 @@ const styles = StyleSheet.create({
     borderWidth : 1,
     borderRadius : 10,
     flexDirection : "column",
-    marginTop : "2%",
+    marginTop : "10%",
     width : "100%",
-    height : 550,
+    height : 350,
     overflow : "hidden",
-    backgroundColor : "#2474DB",
+    backgroundColor : "black",
   },
 
   ScrollView : {

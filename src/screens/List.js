@@ -8,52 +8,84 @@ import { Feather } from '@expo/vector-icons';
 
 
 
+
 export default function List ({navigation}) {
   const LoadHome = () => {
     navigation.navigate ('Home');
+  }
+  const LoadAutoparts = () => {
+    navigation.navigate ('Autoparts');
+  }
+  const LoadCamera = () => {
+    navigation.navigate ('Camera');
+  }
+  const LoadChangeCar = () => {
+    navigation.navigate ('ChangeCar');
+  }
+  const LoadDiscount = () => {
+    navigation.navigate ('Percent');
+  }
+  const LoadHistory = () => {
+    navigation.navigate ('History');
+  }
+  const LoadService = () => {
+    navigation.navigate ('Service');
   }  
-    
       return (
         <View style={styles.container}>
-           <View style={styles.header}>
-           <ImageBackground source={ImageBack} resizeMode="cover" style={styles.ImageBack}>
-            <Text style={styles.textHeader}>
-              Доступні дії
-            </Text>
-            </ImageBackground>
-        </View>
-        <View style={styles.menuContainer}>
-        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-            <Text style={styles.description}>
-              <FontAwesome name="history" size={24} color="white" /> 
-                Перегляд історії обслуговування
-            </Text>
-            <Text style={styles.description}>
-              <AntDesign name="car" size={24} color="white" /> 
-                Виклик підмінного автомобіля
-            </Text>
-            <Text style={styles.description}>
-              <AntDesign name="calendar" size={24} color="white" /> 
-                Запис на сервіс
-            </Text>
-            <Text style={styles.description}>
-              <Octicons name="device-camera-video" size={24} color="white" /> 
-                Камери спостереження
-            </Text>
-            <Text style={styles.description}>
-              <FontAwesome name="gears" size={24} color="white" /> 
-                Замовлення автозапчастин
-            </Text>
-            <Text style={styles.description}>
-              <Feather name="percent" size={24} color="white" />
-                Акції та скидки
-            </Text>
-            <Text style={styles.description} onPress={LoadHome}>
-              <FontAwesome name="home" size={24} color="white" /> 
-                Головне меню
-            </Text>
+          <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+          <View style={styles.header}>
+            <ImageBackground source={ImageBack} resizeMode="cover" style={styles.ImageBack}>
+              <Text style={styles.textHeader}>
+                Доступні дії
+              </Text>
             </ImageBackground>
           </View>
+        <View style={styles.menuContainer}>
+            <View style={styles.description}>
+            <FontAwesome name="history" size={24} color="white" style={styles.right} /> 
+            <Text style={styles.iconList} onPress={LoadHistory}>
+                 Історія обслуговування
+            </Text>
+            </View>
+            <View style={styles.description}>
+            <AntDesign name="car" size={24} color="white" style={styles.right} /> 
+            <Text style={styles.iconList} onPress={LoadChangeCar}>
+                 Підмінний автомобіль
+            </Text>
+            </View>
+            <View style={styles.description}>
+            <AntDesign name="calendar" size={24} color="white" style={styles.right} /> 
+            <Text style={styles.iconList} onPress={LoadService} >
+                Запис на сервіс
+            </Text>
+            </View>
+            <View style={styles.description}>
+            <Octicons name="device-camera-video" size={24} color="white" style={styles.right} /> 
+            <Text style={styles.iconList} onPress={LoadCamera}>
+              Спостерігати за авто 
+            </Text>
+            </View>
+            <View style={styles.description}>
+            <FontAwesome name="gears" size={24} color="white" style={styles.right} />
+            <Text style={styles.iconList} onPress={LoadAutoparts}> 
+                 Автозапчастини
+            </Text>
+            </View>
+            <View style={styles.description}>
+            <Feather name="percent" size={24} color="white" style={styles.right} />
+            <Text style={styles.iconList} onPress={LoadDiscount}>
+                Акції та скидки
+            </Text>
+            </View>
+            <View style={styles.description}>
+            <FontAwesome name="home" size={24} color="white" style={styles.right}/> 
+            <Text style={styles.iconList} onPress={LoadHome}>
+                Головне меню
+            </Text>
+            </View>
+          </View>
+          </ImageBackground>
         </View>
   
       );
@@ -66,6 +98,7 @@ export default function List ({navigation}) {
 
 container : {
 flex : 1,
+flexWrap : "wrap",
 position : "absolute",
 width : "100%",
 height : "100%",
@@ -73,11 +106,13 @@ height : "100%",
 },
 
 description : {
-fontSize : 21,
+flex : 1,
+flexWrap: "wrap",
+fontSize : 20,
 color : "white",
 borderWidth : 1,
 borderRadius : 10,
-margin : 25,
+margin : 10,
 textAlign : "center",
 width : "90%",
 backgroundColor : "black",
@@ -87,7 +122,6 @@ overflow : "hidden",
 
 header: {
   height: "15%",
-  backgroundColor: "#2474DB",
   borderRadius : 10,
   overflow : "hidden",
 },
@@ -98,22 +132,38 @@ textHeader: {
   color: "white",
   textAlign : "center",
   fontSize: 30,
+  overflow : "hidden",
 },
 
 ImageBack : {
   width: "100%",
   height : "100%",
   borderRadius : 10,
+  overflow: "hidden",
 },
 
 menuContainer : {
   flex : 1,
   flexDirection : "column",
-  flexWrap : "nowrap",
+  flexWrap : "wrap",
+  alignContent : "center",
 },
 
 image : {
   width: "100%",
   height : "100%",
+  overflow: "hidden",
+},
+
+iconList: {
+  color :"white",
+  fontSize : 21,
+  margin : "5%",
+},
+
+right : {
+  top : "25%",
+  marginRight : "10%",
+  marginLeft : "3%"
 }
 });

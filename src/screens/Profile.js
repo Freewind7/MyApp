@@ -1,31 +1,36 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons'; 
-
-
+import { Feather } from '@expo/vector-icons'; 
 
 
 export default function Profile () {
-
     return (
-      <View style={styles.container}>
-        <Text >Тут профіль</Text>
-      </View>
-    );
-  }
-
-
-                                              // Стилі
-const styles = StyleSheet.create({
-                                              //Основний контейнер 
-  container : {
-    flex : 1,
-    position : "absolute",
-    width : "100%",
-    height : "100%",
-    color : "black" 
-  },
+        <View style={styles.container}>
+            <Text style={styles.description}>
+              Скрін профіля
+            </Text>
+        </View>
+    )
+}
  
-});
+const styles = StyleSheet.create({
+
+description : {
+textAlign : "center",
+fontSize : 20,
+top : 300,
+color : "black",        
+},
+
+header : {
+  height : "60%",
+  width: "100%",
+},
+
+profile: {
+  backgroundColor : "red",
+  height: "50%",
+  left : "50%",
+  borderWidth : 1,
+}
+})

@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from "react-native";
 
-export default function Info () {
+export default function Autoparts () {
     return (
         <View>
             <Text style={styles.description}>
-               Найчастіші запитання
+                 Cкрін  автозапчастини
             </Text>
         </View>
     )
